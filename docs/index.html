@@ -30,7 +30,63 @@
 <body>
   <div id="app"></div>
 
+  
+
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- https://cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/search.min.js -->
+  <script src="./libs/search.min.js"></script>
+  <!-- https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-darklight-theme@latest/dist/index.min.js -->
+  <script src="./libs/docsify-darklight-theme@latest.js"></script>
+  <!-- https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/plugins/gitalk.min.js -->
+  <script src="./libs/gitalk.plugins.js"></script>
+  <!-- https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/gitalk/dist/gitalk.min.js -->
+  <script src="./libs/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+  <!-- <script>
+    const gitalk = new Gitalk({
+      clientID: "a2bdae5457402030fb6b", // GitHub Application Client ID.
+      clientSecret: "c1c9ce6f3334a85f5456b602ca138dee038fd414", // GitHub Application Client Secret.
+      repo: "robot_blog",
+      owner: "BerserkerRider",
+      admin: ["zeroone001"],
+      perPage: 20,
+      language: "zh-CN",
+      labels: [],
+      // pagerDirection: "last", 页面方向，默认last
+      distractionFreeMode: true, // 无干扰模式
+      // title: "Welcome to join the Doocs Open Source organization",
+      id: 'home',
+      proxy: "https://forward-github.cyberdog.xiaomi.com/get_access_token",
+    });
+  </script> -->
   <script>
+    var gitalkConfig = {
+      // clientID: "8b7cffeb4ae285e0e3e4",
+      // clientSecret: "58d06f5220e953d6dac7d6723daf225177cc7bb3",
+      // repo: "You-need-to-know-css",
+      // owner: "l-hammer",
+      // admin: ["l-hammer"],
+      // perPage: 20,
+      // language: "en",
+      // labels: ["💬Gitalk"],
+      // pagerDirection: "last",
+      // distractionFreeMode: false
+      clientID: "a2bdae5457402030fb6b", // GitHub Application Client ID.
+      clientSecret: "c1c9ce6f3334a85f5456b602ca138dee038fd414", // GitHub Application Client Secret.
+      repo: "robot_blog",
+      owner: "BerserkerRider",
+      admin: ["zeroone001"],
+      perPage: 20,
+      language: "zh-CN",
+      labels: [],
+      // pagerDirection: "last", 页面方向，默认last
+      distractionFreeMode: true, // 无干扰模式
+      // title: "Welcome to join the Doocs Open Source organization",
+      // id: 'home',
+      proxy: "https://forward-github.cyberdog.xiaomi.com/get_access_token",
+    };
     window.$docsify = {
       name: 'Robot Open Source',
       repo: 'https://github.com/zeroone001/robotdemo.github.io',
@@ -82,68 +138,39 @@
             return editHtml + html;
           });
 
-          // hook.doneEach(function() {
-          //   var label, domObj, main, divEle, gitalk;
-          //   label = vm.route.path.split("/").pop();
-          //   domObj = Docsify.dom;
-          //   main = domObj.getNode("#main");
-
-          //   /**
-          //    * render gittalk
-          //    */
-          //   if (vm.route.path.includes("en")) {
-          //     gitalkConfig.language = "en";
-          //   }
-          //   Array.apply(
-          //     null,
-          //     document.querySelectorAll("div.gitalk-container")
-          //   ).forEach(function(ele) {
-          //     ele.remove();
-          //   });
-          //   divEle = domObj.create("div");
-          //   divEle.id = "gitalk-container-" + label;
-          //   divEle.className = "gitalk-container";
-          //   divEle.style = "width: " + main.clientWidth + "px; margin: 0 auto 20px;";
-          //   domObj.appendTo(domObj.find(".content"), divEle);
-          //   gitalk = new Gitalk(
-          //     Object.assign(gitalkConfig, { id: !label ? "home" : label })
-          //   );
-          //   gitalk.render("gitalk-container-" + label);
-          // });
+          hook.doneEach(function() {
+            var label, domObj, main, divEle, gitalk;
+            label = vm.route.path.split("/").pop();
+            domObj = Docsify.dom;
+            main = domObj.getNode("#main");
+            console.log('label', label);
+            /**
+             * render gittalk
+             */
+            if (vm.route.path.includes("en")) {
+              gitalkConfig.language = "en";
+            } else {
+              gitalkConfig.language = "zh-CN";
+            }
+            Array.apply(
+              null,
+              document.querySelectorAll("div.gitalk-container")
+            ).forEach(function(ele) {
+              ele.remove();
+            });
+            divEle = domObj.create("div");
+            divEle.id = "gitalk-container-" + label;
+            divEle.className = "gitalk-container";
+            divEle.style = "width: " + main.clientWidth + "px; margin: 0 auto 20px;";
+            domObj.appendTo(domObj.find(".content"), divEle);
+            gitalk = new Gitalk(
+              Object.assign(gitalkConfig, { id: !label ? "home" : label })
+            );
+            gitalk.render("gitalk-container-" + label);
+          });
         },
       ]
     }
   </script>
-
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <!-- https://cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/search.min.js -->
-  <script src="./libs/search.min.js"></script>
-  <!-- https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-darklight-theme@latest/dist/index.min.js -->
-  <script src="./libs/docsify-darklight-theme@latest.js"></script>
-  <!-- https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/plugins/gitalk.min.js -->
-  <script src="./libs/gitalk.plugins.js"></script>
-  <!-- https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/gitalk/dist/gitalk.min.js -->
-  <script src="./libs/gitalk.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
-
-  <script>
-    const gitalk = new Gitalk({
-      clientID: "a2bdae5457402030fb6b", // GitHub Application Client ID.
-      clientSecret: "c1c9ce6f3334a85f5456b602ca138dee038fd414", // GitHub Application Client Secret.
-      repo: "robot_blog",
-      owner: "BerserkerRider",
-      admin: ["zeroone001"],
-      perPage: 20,
-      language: "zh-CN",
-      labels: [],
-      // pagerDirection: "last", 页面方向，默认last
-      distractionFreeMode: true, // 无干扰模式
-      // title: "Welcome to join the Doocs Open Source organization",
-      id: 'home',
-      proxy: "https://forward-github.cyberdog.xiaomi.com/get_access_token",
-    });
-  </script>
-
 </body>
 </html>
