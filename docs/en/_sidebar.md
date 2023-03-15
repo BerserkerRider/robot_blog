@@ -1,14 +1,14 @@
 - Design pattern
 
-  - [Chapter I](en/第一章节.md)
-  - [Chapter II](en/第二章节.md)
-  - [Factory mode](en/第一章节.md)
-  - [Prototype pattern](en/第一章节.md)
+  - [Chapter I](en/first.md)
+  - [Chapter II](en/second.md)
+  - [Factory mode](en/first.md)
+  - [Prototype pattern](en/first.md)
 
 - Spring framework
 
-  - [Get to know the spring framework](spring/初识Spring框架.md)
-  - [Dependency injection and examples](spring/初识Spring框架.md)
-  - [Spring conditional assembly](spring/初识Spring框架.md)
+  - [Get to know the spring framework](en/first.md)
+  - [Dependency injection and examples](en/first.md)
+  - [Spring conditional assembly](en/first.md)
 
 - database
